@@ -2,6 +2,7 @@ package org.example.artworkmanagement.model;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,14 +22,15 @@ public class Artwork {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Tiêu đề không được để trống")
     @Column(name = "title")
     private String title;
 
+    @NotBlank(message = "Tên họa sĩ không được để trống")
     @Column(name = "artist")
     private String artist;
 
     @Column(name = "date")
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
-
 }
